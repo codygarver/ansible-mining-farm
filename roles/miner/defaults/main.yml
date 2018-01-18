@@ -1,0 +1,8 @@
+nvidia_package: "nvidia-384"
+excavator_deb: "https://github.com/nicehash/excavator/releases/download/v1.3.9a/excavator_1.3.9a-xenial0_amd64.deb"
+miner_group: miners
+miner_user: miner
+miner_directory: "/var/miner"
+algorithm: equihash
+pool_url: "us1-zcash.flypool.org:3333"
+wallet: "t1dc6wAPXQtCEm4m7q2nCgGLMbdU5yPo4Hp"

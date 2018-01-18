@@ -1,0 +1,10 @@
+---
+
+- name: enable miner
+  service: name=miner.timer enabled=yes state=started
+
+- name: restart miner
+  service: name=miner.service state=restarted
+
+- name: reload sysctl
+  command: sysctl -p

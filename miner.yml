@@ -1,0 +1,5 @@
+---
+
+- hosts: miners
+  roles:
+    - miner

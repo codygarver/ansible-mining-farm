@@ -1,0 +1,10 @@
+[Unit]
+Description=Job that runs the miner script
+After=network.target
+
+[Service]
+Type=simple
+User={{ miner_user }}
+ExecStart=/usr/bin/miner
+Restart=always
+RestartSec=10
