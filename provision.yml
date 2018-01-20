@@ -8,8 +8,8 @@
       raw: test -e /usr/bin/python || (apt update && apt install -y python-minimal)
       become: true
 
-#    - name: Configure hostname
-#      hostname:
-#        name: "{{ hostname }}"
-#      when: hostname is defined
-#      become: true
+    - name: Configure hostname
+      hostname:
+        name: "{{ hostname }}"
+      when: hostname is defined
+      become: true
