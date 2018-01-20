@@ -8,3 +8,15 @@
 
 - name: reload sysctl
   command: sysctl -p
+
+- name: enable-all-gpus
+  command: nvidia-xconfig --enable-all-gpus
+
+- name: cool-bits
+  command: nvidia-xconfig --cool-bits=28
+
+- name: separate-x-screens
+  command: nvidia-xconfig --separate-x-screens
+
+- name: allow-empty-initial-configuration
+  command: nvidia-xconfig --allow-empty-initial-configuration

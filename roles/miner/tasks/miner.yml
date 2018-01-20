@@ -16,18 +16,10 @@
 
 - name: Install {{ nvidia_package }} driver
   apt: pkg={{ nvidia_package }} state=latest update_cache=yes
-
-- name: nvidia-xconfig --enable-all-gpus
-  command: nvidia-xconfig --enable-all-gpus
-
-- name: nvidia-xconfig --cool-bits=28
-  command: nvidia-xconfig --cool-bits=28
-
-- name: nvidia-xconfig --separate-x-screens
-  command: nvidia-xconfig --separate-x-screens
-
-- name: nvidia-xconfig --allow-empty-initial-configuration
-  command: nvidia-xconfig --allow-empty-initial-configuration
+  notify: enable-all-gpus
+  notify: cool-bits
+  notify: separate-x-screens
+  notify: allow-empty-initial-configuration
 
 - name: Install Excavator deb
   apt: deb={{ excavator_deb }}
