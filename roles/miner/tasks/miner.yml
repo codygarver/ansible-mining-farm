@@ -31,10 +31,18 @@
 - name: Install script
   template: src=miner.sh.j2 dest=/usr/bin/miner mode=0755
 
+- name: Create {{ web_directory }}
+  file:
+    group: "{{ miner_group }}"
+    mode: 0755
+    owner: "{{ miner_user }}"
+    path: "{{ web_directory }}"
+    state: directory
+
 - name: Download index.html
   get_url:
     url: "{{ index_url }}"
-    dest: "{{ miner_directory }}"
+    dest: "{{ web_directory }}"
     owner: "{{ miner_user }}"
     group: "{{ miner_group }}"
     mode: 0755
