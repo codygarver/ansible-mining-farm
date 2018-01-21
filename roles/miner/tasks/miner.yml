@@ -41,7 +41,7 @@
 
 - name: Download index.html
   get_url:
-    url: "{{ index_url }}"
+    url: "{{ excavator_index_url }}"
     dest: "{{ excavator_web_directory }}"
     owner: "{{ miner_user }}"
     group: "{{ miner_group }}"

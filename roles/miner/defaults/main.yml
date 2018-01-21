@@ -1,6 +1,6 @@
 excavator_algorithm: equihash
 excavator_deb: "https://github.com/nicehash/excavator/releases/download/v1.3.9a/excavator_1.3.9a-xenial0_amd64.deb"
-index_url: "https://raw.githubusercontent.com/nicehash/excavator/master/web/index.html"
+excavator_index_url: "https://raw.githubusercontent.com/nicehash/excavator/master/web/index.html"
 miner_directory: "/var/miner"
 miner_group: miners
 miner_user: miner
