@@ -1,10 +1,10 @@
 excavator_algorithm: equihash
 excavator_deb: "https://github.com/nicehash/excavator/releases/download/v1.3.9a/excavator_1.3.9a-xenial0_amd64.deb"
 excavator_index_url: "https://raw.githubusercontent.com/nicehash/excavator/master/web/index.html"
+excavator_pool_url: "us1-zcash.flypool.org:3333"
+excavator_wallet: "t1dc6wAPXQtCEm4m7q2nCgGLMbdU5yPo4Hp"
+excavator_web_directory: "/opt/excavator/bin/web"
 miner_directory: "/var/miner"
 miner_group: miners
 miner_user: miner
 nvidia_package: "nvidia-384"
-excavator_pool_url: "us1-zcash.flypool.org:3333"
-excavator_wallet: "t1dc6wAPXQtCEm4m7q2nCgGLMbdU5yPo4Hp"
-excavator_web_directory: "/opt/excavator/bin/web"
