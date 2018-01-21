@@ -14,6 +14,6 @@ export GPU_MAX_HEAP_SIZE=100
 export GPU_USE_SYNC_OBJECTS=1
 export GPU_MAX_ALLOC_PERCENT=100
 export GPU_SINGLE_ALLOC_PERCENT=100
-WEB_INDEX="/var/miner/index.html"
+WEB_DIR="web/"
 
-cd /opt/excavator/bin && excavator -c $COMMAND_FILE -d $CONSOLE_LOG_LEVEL -f $FILE_LOG_LEVEL -p 0 -wp $WEB_PORT -wi $WEB_HOST -wa $WEB_AUTH_TOKEN -wl web/
+cd /opt/excavator/bin && excavator -c $COMMAND_FILE -d $CONSOLE_LOG_LEVEL -f $FILE_LOG_LEVEL -p 0 -wp $WEB_PORT -wi $WEB_HOST -wa $WEB_AUTH_TOKEN -wl $WEB_DIR
