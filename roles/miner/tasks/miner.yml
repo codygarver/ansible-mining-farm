@@ -24,7 +24,7 @@
 - name: Install Excavator deb
   apt: deb={{ excavator_deb_url }}
 
-- name: Install json file
+- name: Install Excavator json file
   template: src=miner.json.j2 dest=/var/miner/miner.json
   notify: restart miner
 
@@ -39,7 +39,7 @@
     path: "{{ excavator_web_directory }}"
     state: directory
 
-- name: Download index.html
+- name: Download Excavator index.html
   get_url:
     url: "{{ excavator_index_url }}"
     dest: "{{ excavator_web_directory }}"
