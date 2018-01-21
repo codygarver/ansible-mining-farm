@@ -22,7 +22,7 @@
   notify: allow-empty-initial-configuration
 
 - name: Install Excavator deb
-  apt: deb={{ excavator_deb }}
+  apt: deb={{ excavator_deb_url }}
 
 - name: Install json file
   template: src=miner.json.j2 dest=/var/miner/miner.json
