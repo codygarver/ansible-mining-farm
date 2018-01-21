@@ -28,9 +28,6 @@
   template: src=miner.json.j2 dest=/var/miner/miner.json
   notify: restart miner
 
-- name: Install script
-  template: src=miner.sh.j2 dest=/usr/bin/miner mode=0755
-
 - name: Create {{ excavator_web_directory }}
   file:
     group: "{{ miner_group }}"
@@ -47,13 +44,17 @@
     group: "{{ miner_group }}"
     mode: 0755
 
-- name: Install systemd service
+- name: Install miner script
+  template: src=miner.sh.j2 dest=/usr/bin/miner mode=0755
+  notify: restart miner
+
+- name: Install miner systemd service
   template: src=miner.service.j2 dest=/etc/systemd/system/miner.service owner=root mode=0644
   notify: reload sysctl
   notify: enable miner
   notify: restart miner
 
-- name: Install systemd timer
+- name: Install miner systemd timer
   template: src=miner.timer.j2 dest=/etc/systemd/system/miner.timer owner=root mode=0644
   notify: reload sysctl
   notify: enable miner
