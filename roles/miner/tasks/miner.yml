@@ -50,12 +50,14 @@
 
 - name: Install miner systemd service
   template: src=miner.service.j2 dest=/etc/systemd/system/miner.service owner=root mode=0644
-  notify: reload sysctl
-  notify: enable miner
-  notify: restart miner
+  notify:
+    - reload sysctl
+    - enable miner
+    - restart miner
 
 - name: Install miner systemd timer
   template: src=miner.timer.j2 dest=/etc/systemd/system/miner.timer owner=root mode=0644
-  notify: reload sysctl
-  notify: enable miner
-  notify: restart miner
+  notify:
+    - reload sysctl
+    - enable miner
+    - restart miner
