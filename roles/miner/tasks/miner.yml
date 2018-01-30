@@ -19,10 +19,6 @@
 
 - name: Install {{ nvidia_package }} driver
   apt: pkg={{ nvidia_package }} state=latest update_cache=yes
-  notify: enable-all-gpus
-  notify: cool-bits
-  notify: separate-x-screens
-  notify: allow-empty-initial-configuration
 
 - name: Install Excavator deb
   apt: deb={{ excavator_deb_url }}
