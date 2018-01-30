@@ -52,7 +52,7 @@
   notify: restart miner
 
 - name: Install fan speed script
-  template: src=set-fan-speed.sh.j2 dest=/usr/bin/set-fan-speed mode=0755
+  template: src=set-fan-speed.sh.j2 dest={{ fan_speed_bin }} mode=0755
   notify: restart miner
 
 - name: Install fan speed sudoers file
