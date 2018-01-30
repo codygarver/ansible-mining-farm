@@ -48,6 +48,14 @@
   template: src=miner.sh.j2 dest=/usr/bin/miner mode=0755
   notify: restart miner
 
+- name: Install fan speed script
+  template: src=set-fan-speed.sh.j2 dest=/usr/bin/set-fan-speed mode=0755
+  notify: restart miner
+
+- name: Install fan speed sudoers file
+  template: src=set-fan-speed.sudoers.d.j2 dest=/etc/sudoers.d/set-fan-speed mode=0644
+  notify: restart miner
+
 - name: Install miner systemd service
   template: src=miner.service.j2 dest=/etc/systemd/system/miner.service owner=root mode=0644
   notify:
