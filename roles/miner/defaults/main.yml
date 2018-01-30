@@ -7,4 +7,5 @@ excavator_web_directory: "/opt/excavator/bin/web"
 miner_directory: "/var/miner"
 miner_group: miners
 miner_user: miner
-nvidia_package: "nvidia-384"
+nvidia_package: "nvidia-390"
+nvidia_ppa: "ppa:graphics-drivers/ppa"
