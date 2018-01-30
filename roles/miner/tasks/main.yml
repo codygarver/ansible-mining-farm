@@ -1,4 +1,70 @@
 ---
 
-- name: Install NiceHash Excavator
-  include: miner.yml
+- name: Create {{ miner_group }} group
+  group: name={{ miner_group }}
+
+- name: Create {{ miner_user}} user
+  user: name={{ miner_user }} group={{ miner_group }} system=yes
+
+- name: Create {{ miner_directory }}
+  file:
+    group: "{{ miner_group }}"
+    mode: 0755
+    owner: "{{ miner_user }}"
+    path: "{{ miner_directory }}"
+    state: directory
+
+- name: Install {{ nvidia_ppa }}
+  apt_repository: repo="{{ nvidia_ppa }}" state=present
+
+- name: Install {{ nvidia_package }} driver
+  apt: pkg={{ nvidia_package }} state=latest update_cache=yes
+
+- name: Install Excavator deb
+  apt: deb={{ excavator_deb_url }}
+
+- name: Install Excavator json file
+  template: src=miner.json.j2 dest=/var/miner/miner.json
+  notify: restart miner
+
+- name: Create {{ excavator_web_directory }}
+  file:
+    group: "{{ miner_group }}"
+    mode: 0755
+    owner: "{{ miner_user }}"
+    path: "{{ excavator_web_directory }}"
+    state: directory
+
+- name: Download Excavator index.html
+  get_url:
+    url: "{{ excavator_index_url }}"
+    dest: "{{ excavator_web_directory }}"
+    owner: "{{ miner_user }}"
+    group: "{{ miner_group }}"
+    mode: 0755
+
+- name: Install miner script
+  template: src=miner.sh.j2 dest=/usr/bin/miner mode=0755
+  notify: restart miner
+
+- name: Install fan speed script
+  template: src=set-fan-speed.sh.j2 dest={{ fan_speed_bin }} mode=0755
+  notify: restart miner
+
+- name: Install fan speed sudoers file
+  template: src=set-fan-speed.sudoers.d.j2 dest=/etc/sudoers.d/set-fan-speed mode=0644
+  notify: restart miner
+
+- name: Install miner systemd service
+  template: src=miner.service.j2 dest=/etc/systemd/system/miner.service owner=root mode=0644
+  notify:
+    - reload sysctl
+    - enable miner
+    - restart miner
+
+- name: Install miner systemd timer
+  template: src=miner.timer.j2 dest=/etc/systemd/system/miner.timer owner=root mode=0644
+  notify:
+    - reload sysctl
+    - enable miner
+    - restart miner
