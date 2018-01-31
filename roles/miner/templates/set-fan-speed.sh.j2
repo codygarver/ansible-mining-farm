@@ -10,6 +10,9 @@ sudo nvidia-xconfig \
 sudo service lightdm restart
 
 # Enable fan control and set fan speed to 100%
+export DISPLAY=:0
+export XAUTHORITY=/var/run/lightdm/root/:0
+
 GPU_IDS=(
     0
     1
@@ -18,5 +21,7 @@ GPU_IDS=(
 for GPU_ID in "${GPU_IDS[@]}"
 do
     echo "Setting GPU$GPU_ID fan speed to {{ nvidia_fan_speed }}"
-    sudo DISPLAY=:0 XAUTHORITY=/var/run/lightdm/root/:0 nvidia-settings -a "[gpu:$GPU_ID]/GPUFanControlState=1" -a "[fan:$GPU_ID]/GPUTargetFanSpeed={{ nvidia_fan_speed }}"
+    sudo nvidia-settings \
+        -a "[gpu:$GPU_ID]/GPUFanControlState=1" \
+        -a "[fan:$GPU_ID]/GPUTargetFanSpeed={{ nvidia_fan_speed }}"
 done
