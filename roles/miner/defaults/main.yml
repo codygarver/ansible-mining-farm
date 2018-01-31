@@ -11,3 +11,4 @@ miner_group: miners
 miner_user: miner
 nvidia_package: "nvidia-390"
 nvidia_ppa: "ppa:graphics-drivers/ppa"
+nvida_fan_speed: "100"
