@@ -1,7 +1,12 @@
 #!/bin/sh
 
 # Unlock GPUs
-sudo nvidia-xconfig --enable-all-gpus --cool-bits=28 --separate-x-screens --allow-empty-initial-configuration
+sudo nvidia-xconfig \
+    --allow-empty-initial-configuration \
+    --cool-bits=28 \
+    --enable-all-gpus \
+    --separate-x-screens
+
 sudo service lightdm restart
 
 # Enable fan control and set fan speed to 100%
