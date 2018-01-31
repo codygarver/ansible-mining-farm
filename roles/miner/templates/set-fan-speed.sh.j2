@@ -1,13 +1,19 @@
-#!/bin/sh
+#!/bin/bash
+set -e
+
+if [[ "$(id -u)" != 0 ]]; then
+    echo "E: Changing nvidia settings requires root permissions" > /dev/stderr
+    exit 1
+fi
 
 # Unlock GPUs
-sudo nvidia-xconfig \
+nvidia-xconfig \
     --allow-empty-initial-configuration \
     --cool-bits=28 \
     --enable-all-gpus \
     --separate-x-screens
 
-sudo service lightdm restart
+service lightdm restart
 
 # Enable fan control and set fan speed to 100%
 export DISPLAY=:0
@@ -21,7 +27,7 @@ GPU_IDS=(
 for GPU_ID in "${GPU_IDS[@]}"
 do
     echo "Setting GPU$GPU_ID fan speed to {{ nvidia_fan_speed }}"
-    sudo nvidia-settings \
+    nvidia-settings \
         -a "[gpu:$GPU_ID]/GPUFanControlState=1" \
         -a "[fan:$GPU_ID]/GPUTargetFanSpeed={{ nvidia_fan_speed }}"
 done
