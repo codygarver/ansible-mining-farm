@@ -1,5 +1,5 @@
 excavator_algorithm: equihash
-excavator_deb_url: "https://github.com/nicehash/excavator/releases/download/v1.4.1a/excavator_1.4.1a-xenial0_amd64.deb"
+excavator_deb_url: "https://github.com/nicehash/excavator/releases/download/v1.4.2a/excavator_1.4.2a-xenial0_amd64.deb"
 excavator_index_url: "https://raw.githubusercontent.com/nicehash/excavator/master/web/index.html"
 excavator_pool_url: "us1-zcash.flypool.org:3333"
 excavator_wallet: "t1dc6wAPXQtCEm4m7q2nCgGLMbdU5yPo4Hp"
