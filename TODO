@@ -5,3 +5,4 @@
 * comment out html <header> lines
 * fan control
 * make sure these are latest: libcuda1-390 libxnvctrl0 nvidia-opencl-icd-390 nvidia-settings
+* log command
