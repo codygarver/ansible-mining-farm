@@ -1,4 +1,4 @@
 ---
 
-- include: provision.yml
-- include: miner.yml
+- import_playbook: provision.yml
+- import_playbook: miner.yml
