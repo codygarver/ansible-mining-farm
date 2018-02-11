@@ -26,7 +26,6 @@ GPU_IDS=(
 
 for GPU_ID in "${GPU_IDS[@]}"
 do
-    echo "Setting GPU$GPU_ID fan speed to {{ nvidia_fan_speed }}"
     nvidia-settings \
         -a "[gpu:$GPU_ID]/GPUFanControlState=1" \
         -a "[fan:$GPU_ID]/GPUTargetFanSpeed={{ nvidia_fan_speed }}"
