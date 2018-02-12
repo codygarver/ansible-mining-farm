@@ -29,4 +29,5 @@ do
     nvidia-settings \
         -a "[gpu:$GPU_ID]/GPUFanControlState=1" \
         -a "[fan:$GPU_ID]/GPUTargetFanSpeed={{ nvidia_fan_speed }}"
+    nvidia-smi -i "$GPU_ID" -pl {{ nvidia_max_watts }}
 done

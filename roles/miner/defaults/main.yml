@@ -10,5 +10,6 @@ fan_speed_bin: "/usr/bin/set-fan-speed"
 miner_directory: "/var/miner"
 miner_user: miner
 nvidia_fan_speed: "85"
+nvidia_max_watts: "275"
 nvidia_package: "nvidia-390"
 nvidia_ppa: "ppa:graphics-drivers/ppa"
