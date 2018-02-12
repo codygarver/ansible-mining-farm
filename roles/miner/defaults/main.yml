@@ -7,7 +7,6 @@ excavator_wallet: "t1dc6wAPXQtCEm4m7q2nCgGLMbdU5yPo4Hp"
 excavator_web_directory: "/opt/excavator/bin/web"
 fan_speed_bin: "/usr/bin/set-fan-speed"
 miner_directory: "/var/miner"
-miner_group: miners
 miner_user: miner
 nvidia_fan_speed: "100"
 nvidia_package: "nvidia-390"

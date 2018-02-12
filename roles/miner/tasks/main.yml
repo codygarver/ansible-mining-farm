@@ -1,14 +1,14 @@
 ---
 
-- name: Create {{ miner_group }} group
-  group: name={{ miner_group }}
+- name: Create {{ miner_user }} group
+  group: name={{ miner_user }}
 
 - name: Create {{ miner_user}} user
-  user: name={{ miner_user }} group={{ miner_group }} system=yes
+  user: name={{ miner_user }} group={{ miner_user }} system=yes
 
 - name: Create {{ miner_directory }}
   file:
-    group: "{{ miner_group }}"
+    group: "{{ miner_user }}"
     mode: 0755
     owner: "{{ miner_user }}"
     path: "{{ miner_directory }}"
@@ -29,7 +29,7 @@
 
 - name: Create {{ excavator_web_directory }}
   file:
-    group: "{{ miner_group }}"
+    group: "{{ miner_user }}"
     mode: 0755
     owner: "{{ miner_user }}"
     path: "{{ excavator_web_directory }}"
@@ -40,7 +40,7 @@
     url: "{{ excavator_index_url }}"
     dest: "{{ excavator_web_directory }}"
     owner: "{{ miner_user }}"
-    group: "{{ miner_group }}"
+    group: "{{ miner_user }}"
     mode: 0755
 
 - name: Install miner script
