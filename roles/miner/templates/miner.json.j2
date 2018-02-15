@@ -3,14 +3,15 @@
 		{"id":1,"method":"algorithm.add","params":["{{ excavator_algorithm }}","{{ excavator_pool_url }}","{{ excavator_wallet }}.{{ hostname }}"]}
 	]},
 	{"time":3,"commands":[
-		{"id":1,"method":"worker.add","params":["0","0"]},
-		{"id":1,"method":"worker.add","params":["0","1"]}
+{% for gpu_id in gpu_ids %}
+		{"id":1,"method":"worker.add","params":["0","{{ gpu_id }}"]}{% if not loop.last %},{% endif %}
+{% endfor %}
 	]},
 	{"time":10,"loop":10,"commands":[
-		{"id":1,"method":"worker.print.speed","params":["0"]},
-		{"id":1,"method":"algorithm.print.speeds","params":["0"]},
-                {"id":1,"method":"worker.print.speed","params":["1"]},
-                {"id":1,"method":"algorithm.print.speeds","params":["1"]}
+{% for gpu_id in gpu_ids %}
+		{"id":1,"method":"worker.print.speed","params":["{{ gpu_id }}"]},
+		{"id":1,"method":"algorithm.print.speeds","params":["{{ gpu_id }}"]}{% if not loop.last %},{% endif %}
+{% endfor %}
 	]}
 ]
 

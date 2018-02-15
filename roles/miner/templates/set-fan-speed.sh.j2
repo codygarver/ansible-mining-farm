@@ -20,8 +20,9 @@ export DISPLAY=:0
 export XAUTHORITY=/var/run/lightdm/root/:0
 
 GPU_IDS=(
-    0
-    1
+{% for gpu_id in gpu_ids %}
+    {{ gpu_id }}
+{% endfor %}
 )
 
 for GPU_ID in "${GPU_IDS[@]}"

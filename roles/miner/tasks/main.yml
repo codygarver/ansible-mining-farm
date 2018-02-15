@@ -24,7 +24,13 @@
   apt: deb={{ excavator_deb_url }}
 
 - name: Install Excavator json file
-  template: src=miner.json.j2 dest=/var/miner/miner.json
+  copy:
+    content: "{{ item | to_nice_json }}"
+    dest: /var/miner/miner.json
+    group: "{{ miner_user }}"
+    mode: 0755
+    owner: "{{ miner_user }}"
+  with_template: miner.json.j2
   notify: restart miner
 
 - name: Create {{ excavator_web_directory }}
