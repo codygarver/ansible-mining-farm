@@ -6,7 +6,7 @@ sudo {{ fan_speed_bin }}
 COMMAND_FILE="/var/miner/miner.json"
 CONSOLE_LOG_LEVEL="2"
 FILE_LOG_LEVEL="6"
-WEB_PORT="10000"
+WEB_PORT={{ excavator_port }}
 WEB_HOST={{ ansible_host }}
 WEB_AUTH_TOKEN=
 export WEB_LAUNCH_DELAY=5
