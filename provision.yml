@@ -11,5 +11,7 @@
     - name: Configure hostname
       hostname:
         name: "{{ hostname }}"
-      when: hostname is defined
+      when:
+        - hostname is defined
+        - hostname != "hbtechminer1"
       become: true

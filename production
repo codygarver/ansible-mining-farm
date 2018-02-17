@@ -1,3 +1,4 @@
 [miners]
 10.188.220.123 ansible_host=10.188.220.123 gpu_ids="["0", "1"]" hostname=miner1
+10.188.220.194 ansible_host=10.188.220.194 excavator_wallet=t1ZtbCjm3jKGRh8WQ7gMJ9pp1YFE7gg6xMm gpu_ids="["0"]" hostname=hbtechminer1
 192.168.1.118 ansible_host=192.168.1.118 gpu_ids="["0", "1"]" hostname=miner2

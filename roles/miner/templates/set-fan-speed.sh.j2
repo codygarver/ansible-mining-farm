@@ -6,6 +6,7 @@ if [[ "$(id -u)" != 0 ]]; then
     exit 1
 fi
 
+{% if hostname != "hbtechminer1" %}
 # Unlock GPUs
 nvidia-xconfig \
     --allow-empty-initial-configuration \
@@ -14,6 +15,7 @@ nvidia-xconfig \
     --separate-x-screens
 
 service lightdm restart
+{% endif %}
 
 # Enable fan control and set fan speed to 100%
 export DISPLAY=:0
@@ -27,8 +29,10 @@ GPU_IDS=(
 
 for GPU_ID in "${GPU_IDS[@]}"
 do
+{% if hostname != "hbtechminer1" %}
     nvidia-settings \
         -a "[gpu:$GPU_ID]/GPUFanControlState=1" \
         -a "[fan:$GPU_ID]/GPUTargetFanSpeed={{ nvidia_fan_speed }}"
+{% endif %}
     nvidia-smi -i "$GPU_ID" -pl {{ nvidia_max_watts }}
 done
